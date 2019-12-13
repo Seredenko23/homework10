@@ -5,19 +5,23 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import UserList from "./parts/UserList/UserList";
 import PostList from "./parts/PostList/PostList"
+import CommentList from "./parts/CommentList/CommentList";
+import Alert from "react-bootstrap/Alert";
 
 type Props = {
   userHandler: Function,
   postHandler: Function,
   users: Array<Object>,
   posts: Array<Object>,
-  comments: Array<Object>
+  comments: Array<Object>,
+  alertMessage: string,
 }
 
 class ContentWrapper extends Component<Props> {
   render() {
     return (
       <Container className="justify-content-center">
+        {!!this.props.alertMessage && <Alert variant='primary'>{this.props.alertMessage}</Alert>}
         <Row>
           <Col>
             <UserList users={this.props.users}
@@ -30,7 +34,7 @@ class ContentWrapper extends Component<Props> {
         </Row>
         <Row>
           <Col>
-
+            <CommentList comments={this.props.comments}/>
           </Col>
         </Row>
       </Container>

@@ -10,41 +10,58 @@ type Props = null;
 type State = {
   users: Array<Object>,
   posts: Array<Object>,
-  comments: Array<Object>
+  comments: Array<Object>,
+  alertMessage: string,
 };
 
 class App extends React.Component<Props, State> {
   state = {
     users: [],
     posts: [],
-    comments: []
+    comments: [],
+    alertMessage: ''
   };
 
   buttonHandler = (event: SyntheticEvent<HTMLButtonElement>) => {
     request('/users')
       .then(res => {
         this.setState({
-           users: res.body,
+          users: res.body,
+          alertMessage: 'Here is users!'
         })
+      }).catch(e => {
+      this.setState({
+        alertMessage: e
       })
+    })
   };
 
   userHandler = (id: number) => {
     request(`/posts?userId=${id}`)
       .then(res => {
         this.setState({
-          posts: res.body
+          posts: res.body,
+          alertMessage: 'Here is posts!'
         })
+      }).catch(e => {
+      this.setState({
+        alertMessage: e
       })
+    })
   };
 
   postHandler = (id: number) => {
     request(`/comments?postId=${id}`)
       .then(res => {
         this.setState({
-          comments: res.body
+          comments: res.body,
+          alertMessage: 'Here is comments!'
         })
+      }).catch(e => {
+      this.setState({
+        alertMessage: e
       })
+    })
   };
 
   render() {
@@ -57,7 +74,8 @@ class App extends React.Component<Props, State> {
                         postHandler={this.postHandler}
                         users={this.state.users}
                         posts={this.state.posts}
-                        comments={[]}/>
+                        comments={this.state.comments}
+                        alertMessage={this.state.alertMessage}/>
       </div>
     );
   }

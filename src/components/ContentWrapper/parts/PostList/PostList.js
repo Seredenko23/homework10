@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import ListGroup from "react-bootstrap/ListGroup";
+import Post from "./Post/Post";
 
 type Props = {
   handler: Function,
@@ -11,11 +12,11 @@ class PostList extends Component<Props> {
   render() {
     return (
       <ListGroup>
-        {this.props.posts.map(post => {
+        {this.props.posts.map(el => {
           return (
-            <ListGroup.Item key={post.id}
-                            onClick={() => {this.props.handler(post.id)}}
-                            action>{post.title}</ListGroup.Item>
+            <Post key={el.id}
+                  post={el}
+                  handler={this.props.handler}/>
           )
         })}
       </ListGroup>
