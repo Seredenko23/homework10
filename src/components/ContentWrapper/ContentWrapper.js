@@ -20,7 +20,7 @@ type Props = {
 class ContentWrapper extends Component<Props> {
   render() {
     return (
-      <Container className="justify-content-center">
+      <Container className="justify-content-center mt-3">
         {!!this.props.alertMessage && <Alert variant='primary'>{this.props.alertMessage}</Alert>}
         <Row>
           <Col>
@@ -32,7 +32,7 @@ class ContentWrapper extends Component<Props> {
                       handler={this.props.postHandler} />
           </Col>
         </Row>
-        <Row>
+        <Row className='mt-3'>
           <Col>
             <CommentList comments={this.props.comments}/>
           </Col>

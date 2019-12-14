@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.css';
 import Button from "react-bootstrap/Button";
-import request from "./services/request";
+import {getUsers ,getPosts ,getComments} from "./services/request";
 import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 
 type Props = null;
@@ -23,7 +23,7 @@ class App extends React.Component<Props, State> {
   };
 
   buttonHandler = (event: SyntheticEvent<HTMLButtonElement>) => {
-    request('/users')
+    getUsers()
       .then(res => {
         this.setState({
           users: res.body,
@@ -37,7 +37,7 @@ class App extends React.Component<Props, State> {
   };
 
   userHandler = (id: number) => {
-    request(`/posts?userId=${id}`)
+    getPosts(id)
       .then(res => {
         this.setState({
           posts: res.body,
@@ -51,7 +51,7 @@ class App extends React.Component<Props, State> {
   };
 
   postHandler = (id: number) => {
-    request(`/comments?postId=${id}`)
+    getComments(id)
       .then(res => {
         this.setState({
           comments: res.body,
@@ -67,7 +67,8 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div className="App">
-        <Button onClick={this.buttonHandler}>
+        <Button className='m-2'
+                onClick={this.buttonHandler}>
           Get users
         </Button>
         <ContentWrapper userHandler={this.userHandler}

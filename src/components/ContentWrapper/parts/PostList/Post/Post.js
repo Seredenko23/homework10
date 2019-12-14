@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-import request from "../../../../../services/request";
+import { getComments } from "../../../../../services/request";
 import Spinner from "react-bootstrap/Spinner";
 import Badge from "react-bootstrap/Badge";
 
@@ -22,7 +22,7 @@ class Post extends Component<Props, State> {
   };
 
   componentDidMount() {
-    request(`/comments?postId=${this.props.post.id}`)
+    getComments(this.props.post.id)
       .then(res => {
         this.setState({
           isLoading: false,
