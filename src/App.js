@@ -2,7 +2,7 @@
 import React from 'react';
 import './App.css';
 import Button from "react-bootstrap/Button";
-import {getUsers ,getPosts ,getComments} from "./services/request";
+import {getUsers ,getPosts ,getComments} from "./services/api";
 import ContentWrapper from "./components/ContentWrapper/ContentWrapper";
 
 type Props = null;
@@ -67,16 +67,20 @@ class App extends React.Component<Props, State> {
   render() {
     return (
       <div className="App">
-        <Button className='m-2'
-                onClick={this.buttonHandler}>
+        <Button
+          className='m-2'
+          onClick={this.buttonHandler}
+        >
           Get users
         </Button>
-        <ContentWrapper userHandler={this.userHandler}
-                        postHandler={this.postHandler}
-                        users={this.state.users}
-                        posts={this.state.posts}
-                        comments={this.state.comments}
-                        alertMessage={this.state.alertMessage}/>
+        <ContentWrapper
+          userHandler={this.userHandler}
+          postHandler={this.postHandler}
+          users={this.state.users}
+          posts={this.state.posts}
+          comments={this.state.comments}
+          alertMessage={this.state.alertMessage}
+        />
       </div>
     );
   }

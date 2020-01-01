@@ -13,9 +13,13 @@ class UserList extends Component<Props> {
       <ListGroup>
         {this.props.users.map(user => {
           return (
-            <ListGroup.Item key={user.id}
-                            onClick={() => {this.props.handler(user.id)}}
-                            action>{user.name}</ListGroup.Item>
+            <ListGroup.Item
+              key={user.id}
+              onClick={() => {this.props.handler(user.id)}}
+              action
+            >
+              {user.name}
+            </ListGroup.Item>
           )
         })}
       </ListGroup>

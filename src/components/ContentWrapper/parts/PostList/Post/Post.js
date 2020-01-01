@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ListGroupItem from "react-bootstrap/ListGroupItem";
-import { getComments } from "../../../../../services/request";
+import { getComments } from "../../../../../services/api";
 import Spinner from "react-bootstrap/Spinner";
 import Badge from "react-bootstrap/Badge";
 
@@ -33,9 +33,11 @@ class Post extends Component<Props, State> {
 
   render() {
     return (
-      <ListGroupItem className={'d-flex justify-content-between'}
-                     onClick={() => {this.props.handler(this.props.post.id)}}
-                     action>
+      <ListGroupItem
+        className={'d-flex justify-content-between'}
+        onClick={() => {this.props.handler(this.props.post.id)}}
+        action
+      >
         {this.props.post.title}
         {this.state.isLoading ? <Spinner animation="border" />
                               : <Badge variant="primary">{this.state.commentAmount}</Badge>}

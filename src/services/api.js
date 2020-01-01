@@ -3,8 +3,7 @@ import type { response } from "../types/response";
 import user from "../types/user";
 import post from "../types/post";
 import comment from "../types/comment";
-
-const BASE_URL:string = "https://jsonplaceholder.typicode.com"
+import { BASE_URL } from "../config/config"
 
 async function getUsers() {
     const res: Response = await fetch(BASE_URL + "/users");

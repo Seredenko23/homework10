@@ -24,12 +24,16 @@ class ContentWrapper extends Component<Props> {
         {!!this.props.alertMessage && <Alert variant='primary'>{this.props.alertMessage}</Alert>}
         <Row>
           <Col>
-            <UserList users={this.props.users}
-                      handler={this.props.userHandler} />
+            <UserList
+              users={this.props.users}
+              handler={this.props.userHandler}
+            />
           </Col>
           <Col>
-            <PostList posts={this.props.posts}
-                      handler={this.props.postHandler} />
+            <PostList
+              posts={this.props.posts}
+              handler={this.props.postHandler}
+            />
           </Col>
         </Row>
         <Row className='mt-3'>

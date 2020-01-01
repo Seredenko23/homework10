@@ -14,9 +14,11 @@ class PostList extends Component<Props> {
       <ListGroup>
         {this.props.posts.map(el => {
           return (
-            <Post key={el.id}
-                  post={el}
-                  handler={this.props.handler}/>
+            <Post
+              key={el.id}
+              post={el}
+              handler={this.props.handler}
+            />
           )
         })}
       </ListGroup>

@@ -13,7 +13,10 @@ class CommentList extends Component<Props> {
       <ListGroup>
         {this.props.comments.map(comment => {
           return (
-            <ListGroup.Item className={'d-flex flex-column'} key={comment.id}>
+            <ListGroup.Item
+              className={'d-flex flex-column'}
+              key={comment.id}
+            >
               <b>{comment.name}</b>
               <span>{comment.body}</span>
             </ListGroup.Item>
